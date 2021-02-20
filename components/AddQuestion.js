@@ -58,7 +58,7 @@ class AddQuestion extends Component {
                         value={answer}
                         placeholder='Answer'
                 />
-                <TouchableOpacity style={styles.iosSubmitButton} onPress={this.submitButtonTapped}>
+                <TouchableOpacity disabled={question === '' || answer === ''} style={styles.iosSubmitButton} onPress={this.submitButtonTapped}>
                     <Text style={styles.submitButtonText} >Submit</Text>
                 </TouchableOpacity>
             </View>

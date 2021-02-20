@@ -6,12 +6,12 @@ import { addDeck } from '../actions'
 import {submitAddDeck} from '../utils/api'
 import { CommonActions } from '@react-navigation/native'
 
-function SubmitBtn ({onPress}) {
+function SubmitBtn ({onPress, disabled}) {
     return (
         <TouchableOpacity style={Platform.OS === 'ios' 
         ? styles.iosSubmitButton
         : styles.androidSubmitButton
-    }  onPress={onPress}>
+    }  onPress={onPress} disabled={disabled}>
             <Text style={styles.submitButtonText}>SUBMIT</Text>
         </TouchableOpacity>
     )
@@ -38,6 +38,7 @@ class AddDeck extends Component {
             text: ''
         }))
         submitAddDeck(title)
+        this.props.navigation.navigate('Deck Detail',{deckId: title})
     }
     render() {
         const {text} = this.state
@@ -52,7 +53,7 @@ class AddDeck extends Component {
                         placeholder='Deck Title'
                     />
                 </View>
-                <SubmitBtn onPress={this.submit}/>
+                <SubmitBtn disabled={text === ''} onPress={this.submit}/>
             </KeyboardAvoidingView>
             
         )

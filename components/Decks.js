@@ -42,6 +42,7 @@ class Decks extends Component {
             <View style={{flex:1}}>
                 <FlatList
                 data={Object.keys(decks)}
+                keyExtractor={(item, index) => `${index}`}
                 renderItem={this.renderItem}
                 />
                 

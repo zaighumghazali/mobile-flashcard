@@ -8,3 +8,6 @@ run `npm install` it will install all project dependencies
 run `npm start` it will start the development server and is ready
 run `react-native run-ios` will build the app on iOS simulator
 run `react-native run-android` will build the app on android simulator
+
+# Tested Devices
+This app is tested on android and iOS simulators.

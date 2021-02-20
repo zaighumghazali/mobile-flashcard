@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux'
 import {red, green, white} from '../utils/colors'
 import { CommonActions } from '@react-navigation/native'
-import { clearLocalNotification } from '../utils/helpers'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 class Quiz extends Component {
     state = {
         currentIndex: 0,
@@ -21,9 +21,9 @@ class Quiz extends Component {
     correctButtonTapped = () => {
         this.updateIndex()        
         this.setState((oldState) => ({
-            correctAnswers: oldState.correctAnswers + 1
+            correctAnswers: oldState.correctAnswers + 1,
+            showingQuestion: true
         }))
-        
     }
     updateIndex() {
         const {currentIndex} = this.state
@@ -33,6 +33,7 @@ class Quiz extends Component {
                 showResults: true
             }))
             clearLocalNotification()
+            setLocalNotification()
         } else {
             this.setState((oldState) => ({
                 currentIndex: oldState.currentIndex + 1
@@ -42,7 +43,8 @@ class Quiz extends Component {
     inCorrectButtontapped = () => {
         this.updateIndex()
         this.setState((oldState) => ({
-            falseAnswers: oldState.falseAnswers + 1
+            falseAnswers: oldState.falseAnswers + 1,
+            showingQuestion: true
         }))
     }
     restartQuizButtonTapped= () => {
